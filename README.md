@@ -14,7 +14,6 @@
 
 ### Association
 - has_many :items
-- has_many :comments
 - has_many :orders
 
 ## items
@@ -31,21 +30,8 @@
 | category_id | integer   | null:false                     |
 
 ### Association
-- has_many :comments
 - belongs_to :user
 - has_one :order
-
-
-## comments
-| Column   | Type      | Options                        |
-| -------- | --------- | ------------------------------ |
-| comment  | text      | null:false                     |
-| user     | reference | null: false, foreign_key: true |
-| item     | reference | null: false, foreign_key: true |
-
-### Association
-- belongs_to :user
-- belongs_to :item
 
 
 ## orders
@@ -67,7 +53,7 @@
 | prefecture_id | integer   | null:false                     |
 | city          | string    | null:false                     |
 | block         | string    | null:false                     |
-| building      | text      |                                |
+| building      | string    |                                |
 | phone_number  | string    | null:false                     |
 | order         | reference | null: false, foreign_key: true |
 
