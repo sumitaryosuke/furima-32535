@@ -24,11 +24,11 @@
 | price       | integer   | null:false                     |
 | explanation | text      | null:false                     |
 | user        | reference | null: false, foreign_key: true |
-| status      | integer   | null:false                     |
-| post_fee    | integer   | null:false                     |
-| area        | string    | null:false                     |
-| post_days   | string    | null:false                     |
-| category    | string    | null:false                     |
+| status_id   | integer   | null:false                     |
+| post_fee_id | integer   | null:false                     |
+| area_id     | integer   | null:false                     |
+| post_day_id | integer   | null:false                     |
+| category_id | integer   | null:false                     |
 
 ### Association
 - has_many :comments
@@ -63,12 +63,12 @@
 ## addresses
 | Column        | Type      | Options                        |
 | ------------- | --------- | ------------------------------ |
-| postal_code   | integer   | null:false                     |
-| prefecture    | string    | null:false                     |
+| postal_code   | string    | null:false                     |
+| prefecture_id | integer   | null:false                     |
 | city          | string    | null:false                     |
 | block         | string    | null:false                     |
 | building      | text      |                                |
-| phone_number  | integer   | null:false                     |
+| phone_number  | string    | null:false                     |
 | order         | reference | null: false, foreign_key: true |
 
 ### Association
