@@ -10,9 +10,7 @@
 | first_name         | string  | null:false |
 | last_name_kana     | string  | null:false |
 | first_name_kana    | string  | null:false |
-| birth_year         | integer | null:false |
-| birth_month        | integer | null:false |
-| birth_day          | integer | null:false |
+| birth_day          | date    | null:false |
 
 ### Association
 - has_many :items
@@ -24,13 +22,17 @@
 | ----------- | --------- | ------------------------------ |
 | name        | string    | null:false                     |
 | price       | integer   | null:false                     |
-| post_date   | date      | null:false                     |
 | explanation | text      | null:false                     |
-| user_id     | reference | null: false, foreign_key: true |
+| user        | reference | null: false, foreign_key: true |
+| status      | integer   | null:false                     |
+| post_fee    | integer   | null:false                     |
+| area        | string    | null:false                     |
+| post_days   | string    | null:false                     |
+| category    | string    | null:false                     |
 
 ### Association
 - has_many :comments
-- belongs_to :users
+- belongs_to :user
 - has_one :order
 
 
@@ -38,24 +40,23 @@
 | Column   | Type      | Options                        |
 | -------- | --------- | ------------------------------ |
 | comment  | text      | null:false                     |
-| user_id  | reference | null: false, foreign_key: true |
-| items_id | reference | null: false, foreign_key: true |
+| user     | reference | null: false, foreign_key: true |
+| items    | reference | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 
 ## orders
-| Column   | Type      | Options                        |
-| -------- | --------- | ------------------------------ |
-| price    | integer   | null:false                     |
-| user_id  | reference | null: false, foreign_key: true |
-| items_id | reference | null: false, foreign_key: true |
+| Column | Type      | Options                        |
+| ------ | --------- | ------------------------------ |
+| user   | reference | null: false, foreign_key: true |
+| items  | reference | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - has_one :address
 
 
@@ -66,11 +67,9 @@
 | prefecture    | string    | null:false                     |
 | city          | string    | null:false                     |
 | block         | string    | null:false                     |
-| building      | text      | null:false                     |
+| building      | text      |                                |
 | phone_number  | integer   | null:false                     |
-| user_id       | reference | null: false, foreign_key: true |
-| items_id      | reference | null: false, foreign_key: true |
+| order         | reference | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
-- belongs_to :user
