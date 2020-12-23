@@ -1,16 +1,16 @@
 # テーブル設計
 
 ## users
-| Column             | Type    | Options    |
-| ------------------ | ------- | ---------- |
-| nickname           | string  | null:false |
-| email              | string  | null:false |
-| encrypted_password | string  | null:false |
-| last_name          | string  | null:false |
-| first_name         | string  | null:false |
-| last_name_kana     | string  | null:false |
-| first_name_kana    | string  | null:false |
-| birth_day          | date    | null:false |
+| Column             | Type    | Options      |
+| ------------------ | ------- | ------------ |
+| nickname           | string  | null:false   |
+| email              | string  | unique: true |
+| encrypted_password | string  | null:false   |
+| last_name          | string  | null:false   |
+| first_name         | string  | null:false   |
+| last_name_kana     | string  | null:false   |
+| first_name_kana    | string  | null:false   |
+| birth_day          | date    | null:false   |
 
 ### Association
 - has_many :items
@@ -41,7 +41,7 @@
 | -------- | --------- | ------------------------------ |
 | comment  | text      | null:false                     |
 | user     | reference | null: false, foreign_key: true |
-| items    | reference | null: false, foreign_key: true |
+| item     | reference | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -52,7 +52,7 @@
 | Column | Type      | Options                        |
 | ------ | --------- | ------------------------------ |
 | user   | reference | null: false, foreign_key: true |
-| items  | reference | null: false, foreign_key: true |
+| item   | reference | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
