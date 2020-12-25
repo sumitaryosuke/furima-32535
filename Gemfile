@@ -31,6 +31,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+<<<<<<< Updated upstream
+=======
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
+>>>>>>> Stashed changes
 end
 
 group :development do
@@ -55,4 +60,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development do
   gem 'rubocop', require: false
+<<<<<<< Updated upstream
 end
+=======
+end
+
+gem 'devise'
+gem 'pry-rails'
+>>>>>>> Stashed changes
