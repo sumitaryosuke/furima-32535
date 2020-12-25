@@ -32,9 +32,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
+>>>>>>> Stashed changes
+=======
+  gem 'rspec-rails', '~> 4.0.0'
 >>>>>>> Stashed changes
 end
 
@@ -61,10 +65,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development do
   gem 'rubocop', require: false
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 end
 =======
 end
 
 gem 'devise'
 gem 'pry-rails'
+>>>>>>> Stashed changes
+=======
+end
+
+gem 'devise'
 >>>>>>> Stashed changes
