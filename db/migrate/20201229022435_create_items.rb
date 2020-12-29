@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string      :name,        null: false, default: ""
       t.integer     :price,       null: false
       t.integer     :status_id,   null: false
-      t.integer     :post_fee_ad, null: false
+      t.integer     :post_fee_id, null: false
       t.integer     :area_id,     null: false
       t.integer     :post_day_id, null: false
       t.integer     :category_id, null: false
