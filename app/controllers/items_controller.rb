@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   def index
   end
@@ -8,7 +9,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # Prototype.create(prototype_params)
     @item = Item.create(item_params)
     if @item.save
       redirect_to action: :index
@@ -16,9 +16,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
   private
 
-  def message_params
+  def item_params
     params.require(:item).permit(:image, :name, :price, :explanation, :area_id, :post_fee_id, :category_id, :post_day_id, :status_id).merge(user_id: current_user.id)
   end
 
