@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :post_day
   belongs_to :status
   belongs_to :post_fee
+  has_one :order
 
   with_options presence: true do
     validates :name
