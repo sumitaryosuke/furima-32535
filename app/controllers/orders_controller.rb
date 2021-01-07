@@ -1,19 +1,43 @@
 class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
+    @order_address = OrderAddress.new
   end
 
-  def new
-    @order = Order.new
-  end
+  # def new
+  #   @order_address = OrderAddress.new
+  # end
 
   def create
-    @order = Order.new(order_params)
+    # binding.pry
+    @order_address = OrderAddress.new(order_params)
+    @order_address.save
+    # pay_item
+    if @order_address.valid?
+      @order_address.save
+      redirect_to items_path
+    begin
+      render :index
+    rescue => exception
+      
+    else
+      
+    end
+    end
   end
 
-  # private
+  private
   def order_params
-    params.require(:order).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:order_address).permit(:postal_code, :area_id, :city, :block, :building, :phone_number).merge( token: params[:token], item_id: params[:item_id], user_id: current_user.id)
   end
   
+  # def pay_item
+  #   Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+  #   Payjp::Charge.create(
+  #     amount: order_params[:price],  # 商品の値段
+  #     card: order_params[:token],    # カードトークン
+  #     currency: 'jpy'                 # 通貨の種類（日本円）
+  #   )
+  # end
+
 end
