@@ -1,20 +1,16 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :redirect_order, only: [:index]
+  before_action :set_item, only: [:index, :create, :pay_item]
+
   def index
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
   end
 
-  # def new
-  #   @order_address = OrderAddress.new
-  # end
-
   def create
-    # binding.pry
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
-    # @order_address.save
-    pay_item
     if @order_address.valid?
+      pay_item
       @order_address.save
       redirect_to items_path
     else
@@ -31,12 +27,25 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    # item = Item.find(params[:item_id])
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: order_params[:token], # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def redirect_order
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+    unless @item.order.blank?
+      redirect_to root_path
+    end
   end
 end

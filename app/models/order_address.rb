@@ -9,7 +9,6 @@ class OrderAddress
     validates :token
     validates :city
     validates :block
-    # validates :building
     validates :phone_number
   end
 
