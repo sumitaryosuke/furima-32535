@@ -40,10 +40,7 @@ class OrdersController < ApplicationController
   end
 
   def redirect_order
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
-    unless @item.order.blank?
+    if current_user.id == @item.user_id || @item.order.present?
       redirect_to root_path
     end
   end
