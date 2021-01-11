@@ -9,7 +9,10 @@ class OrderAddress
     validates :token
     validates :city
     validates :block
-    validates :phone_number
+    VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+    validates :phone_number, format: { with: VALID_PHONE_REGEX }
+    validates :item_id
+    validates :user_id
   end
 
   def save
